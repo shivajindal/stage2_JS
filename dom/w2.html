@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Display a random image.</title>
+<style type="text/css">
+body {margin-top: 30px;}
+</style> 
+</head>
+<body>
+<div>
+<button id="jsstyle" 
+onclick="display_random_image();">Show Image</button> 
+</div>
+<script>
+function display_random_image() 
+{
+     var theImages = [{
+        src:"https://images.unsplash.com/photo-1496483648148-47c686dc86a8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=529539dbb9e05b931a8f04013727f493&w=1000&q=80",
+        width: "240",
+        height: "160"
+    }, {
+        src: "https://images.unsplash.com/photo-1464252393105-283bcbd42c83?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f32f2d90de764b9cadfd141567a23513&w=1000&q=80",
+        width: "320",
+        height: "195"
+    }, {
+        src: "https://www.planwallpaper.com/static/images/6971875-funny-flowers-pictures.jpg",
+        width: "500",
+        height: "343"
+    }];
+    
+    var preBuffer = [];
+    for (var i = 0, j = theImages.length; i < j; i++) {
+        preBuffer[i] = new Image();
+        preBuffer[i].src = theImages[i].src;
+        preBuffer[i].width = theImages[i].width;
+        preBuffer[i].height = theImages[i].height;
+    }
+   
+  function getRandomInt(min,max) 
+    {
+      
+    
+imn = Math.floor(Math.random() * (max - min + 1)) + min;
+    return preBuffer[imn];
+    }  
+  
+var newImage = getRandomInt(0, preBuffer.length - 1);
+var images = document.getElementsByTagName('img');
+var l = images.length;
+for (var p = 0; p < l; p++) {
+    images[0].parentNode.removeChild(images[0]);
+}
+document.body.appendChild(newImage);
+}
+</script>
+</body>
+</html>
